@@ -18,12 +18,12 @@ int main(int argc, char* argv[]) {
 	std::ifstream fin(argv[1], std::ios::binary);
 	std::ofstream fout(argv[2], std::ios::binary);
 	
-	unsigned char buffer[65536];
+	char buffer[65536];
 	
 	while (fin) {
-		fin.read(reinterpret_cast<char*>(&buffer), 65536);
+		fin.read(buffer, 65536);
 		int len = (int)fin.gcount();
-		fout.write(reinterpret_cast<char*>(&buffer), len);
+		fout.write(buffer, len);
 		memset(buffer, 0, 65536);
 	}
 	
